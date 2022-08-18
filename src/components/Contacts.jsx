@@ -1,4 +1,9 @@
+import styled from 'styled-components';
 import { ContactItem } from './ContactItem';
+
+const Item = styled.li`
+  margin-bottom: 8px;
+`;
 
 export const Contacts = ({ contacts, filter, onClick }) => {
   return (
@@ -10,16 +15,16 @@ export const Contacts = ({ contacts, filter, onClick }) => {
             })
             .map(contact => {
               return (
-                <li key={contact.id}>
+                <Item key={contact.id}>
                   <ContactItem contact={contact} onClick={onClick} />
-                </li>
+                </Item>
               );
             })
         : contacts.map(contact => {
             return (
-              <li key={contact.id}>
+              <Item key={contact.id}>
                 <ContactItem contact={contact} onClick={onClick} />
-              </li>
+              </Item>
             );
           })}
     </ul>
