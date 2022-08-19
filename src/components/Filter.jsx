@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const Filter = ({ onFilter }) => {
   return (
     <>
@@ -6,8 +8,12 @@ export const Filter = ({ onFilter }) => {
         type="text"
         name="filter"
         placeholder="Enter name"
-        onChange={onFilter}
+        onChange={e => onFilter(e.target.value)}
       />
     </>
   );
+};
+
+Filter.propTypes = {
+  onFilter: PropTypes.func,
 };

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { PhonebookForm } from './Phonebook';
+import { Phonebook } from './Phonebook';
 import { Contacts } from './Contacts';
 import { Section } from './Section';
 import { Filter } from './Filter';
@@ -38,30 +38,33 @@ export class App extends Component {
     }
   };
 
-  onFilter = e => {
-    this.setState({ filter: e.target.value });
+  onFilter = value => {
+    this.setState({ filter: value });
   };
 
-  onDeleteContact = e => {
+  onDeleteContact = id => {
     this.setState({
       contacts: this.state.contacts.filter(contact => {
-        return contact.id !== e.target.id;
+        return contact.id !== id;
       }),
     });
   };
   render() {
+    const { state, onAddNewContact, onFilter, onDeleteContact } = this;
+    const { contacts, filter } = state;
+    const contactsToRender = filter
+      ? contacts.filter(contact => {
+          return contact.name.toLowerCase().includes(filter.toLowerCase());
+        })
+      : contacts;
     return (
       <>
         <Section title={'Phonebook'}>
-          <PhonebookForm values={this.state} onSubmit={this.onAddNewContact} />
+          <Phonebook values={state} onSubmit={onAddNewContact} />
         </Section>
         <Section title={'Contacts'}>
-          <Filter onFilter={this.onFilter} />
-          <Contacts
-            contacts={this.state.contacts}
-            filter={this.state.filter}
-            onClick={this.onDeleteContact}
-          />
+          <Filter onFilter={onFilter} />
+          <Contacts contacts={contactsToRender} onClick={onDeleteContact} />
         </Section>
       </>
     );

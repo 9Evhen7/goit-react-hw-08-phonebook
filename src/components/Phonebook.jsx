@@ -1,31 +1,8 @@
-import { Formik, Field, Form } from 'formik';
-import styled from 'styled-components';
+import { Formik } from 'formik';
+import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
+import PropTypes from 'prop-types';
 
-const AddUserForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border: solid black 1px;
-  padding: 8px;
-  padding-right: 150px;
-`;
-const Button = styled.button`
-  width: fit-content;
-  border-radius: 4px;
-  padding: 4px;
-  border: none;
-  &:hover {
-    background-color: #8787e8;
-  }
-`;
-const Label = styled.label`
-  margin-bottom: 8px;
-`;
-const Input = styled(Field)`
-  margin-bottom: 20px;
-`;
-
-export const PhonebookForm = ({ onSubmit }) => {
+export const Phonebook = ({ onSubmit }) => {
   const initialValues = {
     name: '',
     number: '',
@@ -38,6 +15,7 @@ export const PhonebookForm = ({ onSubmit }) => {
           <Input
             type="text"
             name="name"
+            placeholder="Evhen Melnicuk"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -46,6 +24,7 @@ export const PhonebookForm = ({ onSubmit }) => {
           <Input
             type="tel"
             name="number"
+            placeholder="777-21-09"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
@@ -56,4 +35,8 @@ export const PhonebookForm = ({ onSubmit }) => {
       </Formik>
     </>
   );
+};
+
+Phonebook.propTypes = {
+  onSubmit: PropTypes.func,
 };

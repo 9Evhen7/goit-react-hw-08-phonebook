@@ -1,20 +1,14 @@
-import styled from 'styled-components';
+import { ImBin } from 'react-icons/im';
+import { DeleteButton } from 'styles/contactItemStyles';
 
-const DeleteButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  &:hover {
-    background-color: #8787e8;
-  }
-`;
 export const ContactItem = ({ contact, onClick }) => {
   const { id, name, number } = contact;
 
   return (
     <>
       {name}: {number}{' '}
-      <DeleteButton onClick={onClick} id={id}>
-        Delete
+      <DeleteButton onClick={() => onClick(id)} id={id}>
+        <ImBin />
       </DeleteButton>
     </>
   );

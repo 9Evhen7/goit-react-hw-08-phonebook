@@ -1,15 +1,16 @@
-import styled from 'styled-components';
-
-const Wraper = styled.section`
-  margin-left: 16px;
-  max-width: fit-content;
-`;
+import { Wraper, Title } from 'styles/sectionStyles';
+import PropTypes from 'prop-types';
 
 export const Section = ({ title, children }) => {
   return (
     <Wraper>
-      <h2>{title}</h2>
+      <Title>{title}</Title>
       {children}
     </Wraper>
   );
+};
+
+Section.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
 };

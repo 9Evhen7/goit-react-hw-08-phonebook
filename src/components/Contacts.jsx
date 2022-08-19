@@ -1,32 +1,22 @@
-import styled from 'styled-components';
 import { ContactItem } from './ContactItem';
+import { Item } from '../styles/contactsStyles';
+import PropTypes from 'prop-types';
 
-const Item = styled.li`
-  margin-bottom: 8px;
-`;
-
-export const Contacts = ({ contacts, filter, onClick }) => {
+export const Contacts = ({ contacts, onClick }) => {
   return (
     <ul>
-      {filter
-        ? contacts
-            .filter(contact => {
-              return contact.name.toLowerCase().includes(filter.toLowerCase());
-            })
-            .map(contact => {
-              return (
-                <Item key={contact.id}>
-                  <ContactItem contact={contact} onClick={onClick} />
-                </Item>
-              );
-            })
-        : contacts.map(contact => {
-            return (
-              <Item key={contact.id}>
-                <ContactItem contact={contact} onClick={onClick} />
-              </Item>
-            );
-          })}
+      {contacts.map(contact => {
+        return (
+          <Item key={contact.id}>
+            <ContactItem contact={contact} onClick={onClick} />
+          </Item>
+        );
+      })}
     </ul>
   );
+};
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object),
+  onClick: PropTypes.func,
 };
