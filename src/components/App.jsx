@@ -7,14 +7,22 @@ import { Filter } from './Filter';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const localContacts = localStorage.getItem('contacts');
+    console.log(localContacts);
+
+    if (localContacts) {
+      this.setState({ contacts: [...JSON.parse(localContacts)] });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
 
   onAddNewContact = (values, actions) => {
     const newContact = {
@@ -64,7 +72,11 @@ export class App extends Component {
         </Section>
         <Section title={'Contacts'}>
           <Filter onFilter={onFilter} />
-          <Contacts contacts={contactsToRender} onClick={onDeleteContact} />
+          {contacts.length > 0 ? (
+            <Contacts contacts={contactsToRender} onClick={onDeleteContact} />
+          ) : (
+            <p> No contacts in your phonebook </p>
+          )}
         </Section>
       </>
     );
