@@ -19,11 +19,10 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     if (
-      JSON.stringify(this.state.contacts) !== localStorage.getItem('contacts')
+      JSON.stringify(this.state.contacts) !== JSON.stringify(prevState.contacts)
     ) {
-      console.log('update new');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
