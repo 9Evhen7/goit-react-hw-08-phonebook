@@ -7,7 +7,7 @@ import { Filter } from './Filter';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
   useEffect(() => {
     const getLocalContacts = async () => {
@@ -45,9 +45,9 @@ export const App = () => {
     }
   };
 
-  const onFilter = value => {
-    setFilter(value);
-  };
+  // const onFilter = value => {
+  //   setFilter(value);
+  // };
 
   // const onDeleteContact = id => {
   //   setContacts(
@@ -69,7 +69,9 @@ export const App = () => {
         <Phonebook onSubmit={onAddNewContact} />
       </Section>
       <Section title={'Contacts'}>
-        <Filter onFilter={onFilter} />
+        <Filter
+        // onFilter={onFilter}
+        />
         <Contacts />
       </Section>
     </>
