@@ -1,15 +1,24 @@
 import { Formik } from 'formik';
 import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
 
-export const Phonebook = ({ onSubmit }) => {
+export const Phonebook = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, actions) => {
+    dispatch(addContact(values));
+    actions.resetForm();
+  };
+
   const initialValues = {
     name: '',
     number: '',
   };
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <AddUserForm autoComplete="off">
           <Label htmlFor="name">Name</Label>
           <Input

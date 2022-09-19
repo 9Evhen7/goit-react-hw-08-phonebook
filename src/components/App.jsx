@@ -70,11 +70,7 @@ export const App = () => {
       </Section>
       <Section title={'Contacts'}>
         <Filter onFilter={onFilter} />
-        {contacts.length > 0 ? (
-          <Contacts contacts={contactsToRender} onClick={onDeleteContact} />
-        ) : (
-          <p> No contacts in your phonebook </p>
-        )}
+        <Contacts />
       </Section>
     </>
   );

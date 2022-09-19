@@ -1,17 +1,11 @@
 import { ContactItem } from './ContactItem';
-import { List, Item } from '../styles/contactsStyles';
+import { List } from '../styles/contactsStyles';
 import PropTypes from 'prop-types';
 
-export const Contacts = ({ contacts, onClick }) => {
+export const Contacts = () => {
   return (
     <List>
-      {contacts.map(contact => {
-        return (
-          <Item key={contact.id}>
-            <ContactItem contact={contact} onClick={onClick} />
-          </Item>
-        );
-      })}
+      <ContactItem />
     </List>
   );
 };
