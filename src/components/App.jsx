@@ -49,19 +49,19 @@ export const App = () => {
     setFilter(value);
   };
 
-  const onDeleteContact = id => {
-    setContacts(
-      contacts.filter(contact => {
-        return contact.id !== id;
-      }),
-    );
-  };
+  // const onDeleteContact = id => {
+  //   setContacts(
+  //     contacts.filter(contact => {
+  //       return contact.id !== id;
+  //     }),
+  //   );
+  // };
 
-  const contactsToRender = filter
-    ? contacts.filter(contact => {
-        return contact.name.toLowerCase().includes(filter.toLowerCase());
-      })
-    : contacts;
+  // const contactsToRender = filter
+  //   ? contacts.filter(contact => {
+  //       return contact.name.toLowerCase().includes(filter.toLowerCase());
+  //     })
+  //   : contacts;
 
   return (
     <>
