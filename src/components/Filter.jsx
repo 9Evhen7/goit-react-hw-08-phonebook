@@ -1,6 +1,14 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilterQuery } from 'redux/actions';
 
-export const Filter = ({ onFilter }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const onFilter = query => {
+    dispatch(setFilterQuery(query));
+  };
+
   return (
     <>
       <p>Find contact by name</p>
@@ -14,6 +22,6 @@ export const Filter = ({ onFilter }) => {
   );
 };
 
-Filter.propTypes = {
-  onFilter: PropTypes.func,
-};
+// Filter.propTypes = {
+//   onFilter: PropTypes.func,
+// };

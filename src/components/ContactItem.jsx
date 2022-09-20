@@ -1,13 +1,19 @@
 import { ImBin } from 'react-icons/im';
 import { DeleteButton } from 'styles/contactItemStyles';
 import { Item } from '../styles/contactsStyles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { removeContact } from 'redux/actions';
-import { useDispatch } from 'react-redux';
 
 export const ContactItem = () => {
   const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
+
+  const contactsToRender = filter
+    ? contacts.filter(contact => {
+        return contact.name.toLowerCase().includes(filter.toLowerCase());
+      })
+    : contacts;
 
   const handleRemoveContact = e => {
     dispatch(removeContact(e.currentTarget.id));
@@ -15,7 +21,7 @@ export const ContactItem = () => {
 
   return (
     <>
-      {contacts.map(({ id, name, number }) => {
+      {contactsToRender.map(({ id, name, number }) => {
         return (
           <Item key={id}>
             {name}: {number}{' '}

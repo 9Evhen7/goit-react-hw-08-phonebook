@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/actions';
 
@@ -44,8 +43,4 @@ export const Phonebook = () => {
       </Formik>
     </>
   );
-};
-
-Phonebook.propTypes = {
-  onSubmit: PropTypes.func,
 };
