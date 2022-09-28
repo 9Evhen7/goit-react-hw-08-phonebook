@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactsSlice';
 
 export const Phonebook = () => {
   const dispatch = useDispatch();

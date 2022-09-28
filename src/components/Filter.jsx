@@ -1,6 +1,5 @@
-// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { setFilterQuery } from 'redux/actions';
+import { setFilterQuery } from 'redux/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -21,7 +20,3 @@ export const Filter = () => {
     </>
   );
 };
-
-// Filter.propTypes = {
-//   onFilter: PropTypes.func,
-// };
