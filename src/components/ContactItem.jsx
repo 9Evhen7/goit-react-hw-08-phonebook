@@ -22,6 +22,7 @@ export const ContactItem = () => {
 
   return (
     <>
+      {console.log(contactsToRender)}
       {contactsToRender.map(({ id, name, number }) => {
         return (
           <Item key={id}>
