@@ -5,9 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeContact } from 'redux/contactsSlice';
 
 export const ContactItem = () => {
-  const check = useSelector(state => state);
-  console.log(check);
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter.query);
   const dispatch = useDispatch();
 
