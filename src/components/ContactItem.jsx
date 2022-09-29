@@ -22,17 +22,20 @@ export const ContactItem = () => {
 
   return (
     <>
-      {console.log(contactsToRender)}
-      {contactsToRender.map(({ id, name, number }) => {
-        return (
-          <Item key={id}>
-            {name}: {number}{' '}
-            <DeleteButton id={id} onClick={handleRemoveContact}>
-              <ImBin />
-            </DeleteButton>
-          </Item>
-        );
-      })}
+      {contactsToRender.length > 0 ? (
+        contactsToRender.map(({ id, name, number }) => {
+          return (
+            <Item key={id}>
+              {name}: {number}{' '}
+              <DeleteButton id={id} onClick={handleRemoveContact}>
+                <ImBin />
+              </DeleteButton>
+            </Item>
+          );
+        })
+      ) : (
+        <p>No contacts</p>
+      )}
     </>
   );
 };
