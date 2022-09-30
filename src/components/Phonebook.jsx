@@ -1,13 +1,21 @@
 import { Formik } from 'formik';
 import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 
 export const Phonebook = () => {
   const dispatch = useDispatch();
 
+  const existingNames = useSelector(state => state.contacts).map(
+    contact => contact.name,
+  );
+
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
+    if (existingNames.includes(values.name)) {
+      alert('Contact whith the same name already exist!');
+    } else {
+      dispatch(addContact(values));
+    }
     actions.resetForm();
   };
 
