@@ -1,12 +1,12 @@
 import { Formik } from 'formik';
-import { AddUserForm, Button, Label, Input } from 'styles/phonebookStyles';
+import { AddUserForm, Button, Label, Input } from '../styles/phonebookStyles';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 export const Phonebook = () => {
   const dispatch = useDispatch();
 
-  const existingNames = useSelector(state => state.contacts).map(
+  const existingNames = useSelector(state => state.contacts.items).map(
     contact => contact.name,
   );
 

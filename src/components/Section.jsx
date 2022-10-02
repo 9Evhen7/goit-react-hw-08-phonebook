@@ -1,4 +1,4 @@
-import { Wraper, Title } from 'styles/sectionStyles';
+import { Wraper, Title } from '../styles/sectionStyles';
 import PropTypes from 'prop-types';
 
 export const Section = ({ title, children }) => {
