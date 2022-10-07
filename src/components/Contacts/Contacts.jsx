@@ -1,5 +1,5 @@
-import { ContactItem } from './ContactItem';
-import { List } from '../styles/contactsStyles';
+import { ContactItem } from '../ContactsList/ContactItem';
+import { List } from './contactsStyles';
 import PropTypes from 'prop-types';
 
 export const Contacts = () => {
