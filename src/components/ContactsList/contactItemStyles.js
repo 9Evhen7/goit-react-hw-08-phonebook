@@ -4,7 +4,8 @@ export const DeleteButton = styled.button`
   border: none;
   border-radius: 4px;
   background-color: transparent;
+  color: white;
   &:hover {
-    background-color: #8787e8;
+    scale: 1.1;
   }
 `;
