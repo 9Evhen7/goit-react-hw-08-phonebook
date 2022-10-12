@@ -5,6 +5,7 @@ export const DeleteButton = styled.button`
   border-radius: 4px;
   background-color: transparent;
   color: white;
+  cursor: pointer;
   &:hover {
     scale: 1.1;
   }
